@@ -58,6 +58,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountingOfCourtCasesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Адвокаты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Адвокаты.Designer.cs">
+      <DependentUpon>Адвокаты.cs</DependentUpon>
+    </Compile>
     <Compile Include="Вход.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,18 @@
     <Compile Include="О_программе.Designer.cs">
       <DependentUpon>О_программе.cs</DependentUpon>
     </Compile>
+    <Compile Include="Обвинители.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Обвинители.Designer.cs">
+      <DependentUpon>Обвинители.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Обвиняемые.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Обвиняемые.Designer.cs">
+      <DependentUpon>Обвиняемые.cs</DependentUpon>
+    </Compile>
     <Compile Include="Пользователи.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +102,36 @@
     <Compile Include="Регистрация.Designer.cs">
       <DependentUpon>Регистрация.cs</DependentUpon>
     </Compile>
+    <Compile Include="Статьи.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Статьи.Designer.cs">
+      <DependentUpon>Статьи.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Судьи.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Судьи.Designer.cs">
+      <DependentUpon>Судьи.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Уголовные_дела.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Уголовные_дела.Designer.cs">
+      <DependentUpon>Уголовные_дела.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Улики.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Улики.Designer.cs">
+      <DependentUpon>Улики.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Экспертизы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Экспертизы.Designer.cs">
+      <DependentUpon>Экспертизы.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -94,17 +142,41 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Адвокаты.resx">
+      <DependentUpon>Адвокаты.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Вход.resx">
       <DependentUpon>Вход.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="О_программе.resx">
       <DependentUpon>О_программе.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Обвинители.resx">
+      <DependentUpon>Обвинители.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Обвиняемые.resx">
+      <DependentUpon>Обвиняемые.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Пользователи.resx">
       <DependentUpon>Пользователи.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Регистрация.resx">
       <DependentUpon>Регистрация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Статьи.resx">
+      <DependentUpon>Статьи.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Судьи.resx">
+      <DependentUpon>Судьи.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Уголовные_дела.resx">
+      <DependentUpon>Уголовные_дела.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Улики.resx">
+      <DependentUpon>Улики.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Экспертизы.resx">
+      <DependentUpon>Экспертизы.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AccountingOfCourtCasesDataSet.xsc">
       <DependentUpon>AccountingOfCourtCasesDataSet.xsd</DependentUpon>
