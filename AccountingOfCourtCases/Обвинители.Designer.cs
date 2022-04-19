@@ -61,6 +61,14 @@
             this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.адвокатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обвиняемыеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.статьиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.судьиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.уголовныеДелаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.уликиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспертизыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -248,6 +256,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Обновить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage3
             // 
@@ -399,6 +408,15 @@
             // 
             // выбратьБДToolStripMenuItem
             // 
+            this.выбратьБДToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.адвокатыToolStripMenuItem,
+            this.обвиняемыеToolStripMenuItem,
+            this.пользователиToolStripMenuItem,
+            this.статьиToolStripMenuItem,
+            this.судьиToolStripMenuItem,
+            this.уголовныеДелаToolStripMenuItem,
+            this.уликиToolStripMenuItem,
+            this.экспертизыToolStripMenuItem});
             this.выбратьБДToolStripMenuItem.Name = "выбратьБДToolStripMenuItem";
             this.выбратьБДToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.выбратьБДToolStripMenuItem.Text = "Выбрать БД";
@@ -435,6 +453,54 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument1_PrintPage);
+            // 
+            // адвокатыToolStripMenuItem
+            // 
+            this.адвокатыToolStripMenuItem.Name = "адвокатыToolStripMenuItem";
+            this.адвокатыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.адвокатыToolStripMenuItem.Text = "Адвокаты";
+            // 
+            // обвиняемыеToolStripMenuItem
+            // 
+            this.обвиняемыеToolStripMenuItem.Name = "обвиняемыеToolStripMenuItem";
+            this.обвиняемыеToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.обвиняемыеToolStripMenuItem.Text = "Обвиняемые";
+            // 
+            // пользователиToolStripMenuItem
+            // 
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
+            // 
+            // статьиToolStripMenuItem
+            // 
+            this.статьиToolStripMenuItem.Name = "статьиToolStripMenuItem";
+            this.статьиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.статьиToolStripMenuItem.Text = "Статьи";
+            // 
+            // судьиToolStripMenuItem
+            // 
+            this.судьиToolStripMenuItem.Name = "судьиToolStripMenuItem";
+            this.судьиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.судьиToolStripMenuItem.Text = "Судьи";
+            // 
+            // уголовныеДелаToolStripMenuItem
+            // 
+            this.уголовныеДелаToolStripMenuItem.Name = "уголовныеДелаToolStripMenuItem";
+            this.уголовныеДелаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.уголовныеДелаToolStripMenuItem.Text = "Уголовные дела";
+            // 
+            // уликиToolStripMenuItem
+            // 
+            this.уликиToolStripMenuItem.Name = "уликиToolStripMenuItem";
+            this.уликиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.уликиToolStripMenuItem.Text = "Улики";
+            // 
+            // экспертизыToolStripMenuItem
+            // 
+            this.экспертизыToolStripMenuItem.Name = "экспертизыToolStripMenuItem";
+            this.экспертизыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.экспертизыToolStripMenuItem.Text = "Экспертизы";
             // 
             // Обвинители
             // 
@@ -507,5 +573,13 @@
         private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.ToolStripMenuItem адвокатыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обвиняемыеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem статьиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem судьиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem уголовныеДелаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem уликиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспертизыToolStripMenuItem;
     }
 }

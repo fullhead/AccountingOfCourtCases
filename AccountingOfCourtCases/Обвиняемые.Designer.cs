@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Обвиняемые));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,6 +63,15 @@
             this.сохранитьКакCVFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.адвокатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обвинителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.статьиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.судьиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.уголовныеДелаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.уликиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспертизыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -112,12 +124,36 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(4, 29);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1063, 468);
             this.dataGridView1.TabIndex = 13;
@@ -247,6 +283,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Обновить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage3
             // 
@@ -255,7 +292,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(1071, 501);
+            this.tabPage3.Size = new System.Drawing.Size(1071, 499);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Ввод данных";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -267,7 +304,7 @@
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1063, 493);
+            this.panel2.Size = new System.Drawing.Size(1063, 491);
             this.panel2.TabIndex = 0;
             // 
             // panel5
@@ -279,7 +316,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1063, 493);
+            this.panel5.Size = new System.Drawing.Size(1063, 491);
             this.panel5.TabIndex = 0;
             // 
             // label5
@@ -288,7 +325,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(373, 343);
+            this.label5.Location = new System.Drawing.Point(373, 342);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(312, 25);
@@ -300,7 +337,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(421, 372);
+            this.button2.Location = new System.Drawing.Point(421, 371);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(220, 55);
@@ -315,7 +352,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(1071, 501);
+            this.tabPage4.Size = new System.Drawing.Size(1071, 499);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Удалить";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -327,7 +364,7 @@
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1063, 493);
+            this.panel3.Size = new System.Drawing.Size(1063, 491);
             this.panel3.TabIndex = 0;
             // 
             // panel6
@@ -340,7 +377,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1063, 493);
+            this.panel6.Size = new System.Drawing.Size(1063, 491);
             this.panel6.TabIndex = 0;
             // 
             // label7
@@ -349,7 +386,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(300, 289);
+            this.label7.Location = new System.Drawing.Point(300, 288);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(449, 25);
@@ -363,7 +400,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(369, 289);
+            this.label6.Location = new System.Drawing.Point(369, 288);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(318, 25);
@@ -375,7 +412,7 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(406, 333);
+            this.button3.Location = new System.Drawing.Point(406, 332);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(249, 59);
@@ -398,6 +435,15 @@
             // 
             // выбратьБДToolStripMenuItem
             // 
+            this.выбратьБДToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.адвокатыToolStripMenuItem,
+            this.обвинителиToolStripMenuItem,
+            this.пользователиToolStripMenuItem,
+            this.статьиToolStripMenuItem,
+            this.судьиToolStripMenuItem,
+            this.уголовныеДелаToolStripMenuItem,
+            this.уликиToolStripMenuItem,
+            this.экспертизыToolStripMenuItem});
             this.выбратьБДToolStripMenuItem.Name = "выбратьБДToolStripMenuItem";
             this.выбратьБДToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.выбратьБДToolStripMenuItem.Text = "Выбрать БД";
@@ -423,12 +469,65 @@
             this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
             this.печатьToolStripMenuItem.Size = new System.Drawing.Size(225, 26);
             this.печатьToolStripMenuItem.Text = "Печать";
+            this.печатьToolStripMenuItem.Click += new System.EventHandler(this.печатьToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // адвокатыToolStripMenuItem
+            // 
+            this.адвокатыToolStripMenuItem.Name = "адвокатыToolStripMenuItem";
+            this.адвокатыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.адвокатыToolStripMenuItem.Text = "Адвокаты";
+            // 
+            // обвинителиToolStripMenuItem
+            // 
+            this.обвинителиToolStripMenuItem.Name = "обвинителиToolStripMenuItem";
+            this.обвинителиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.обвинителиToolStripMenuItem.Text = "Обвинители";
+            // 
+            // пользователиToolStripMenuItem
+            // 
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
+            // 
+            // статьиToolStripMenuItem
+            // 
+            this.статьиToolStripMenuItem.Name = "статьиToolStripMenuItem";
+            this.статьиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.статьиToolStripMenuItem.Text = "Статьи";
+            // 
+            // судьиToolStripMenuItem
+            // 
+            this.судьиToolStripMenuItem.Name = "судьиToolStripMenuItem";
+            this.судьиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.судьиToolStripMenuItem.Text = "Судьи";
+            // 
+            // уголовныеДелаToolStripMenuItem
+            // 
+            this.уголовныеДелаToolStripMenuItem.Name = "уголовныеДелаToolStripMenuItem";
+            this.уголовныеДелаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.уголовныеДелаToolStripMenuItem.Text = "Уголовные дела";
+            // 
+            // уликиToolStripMenuItem
+            // 
+            this.уликиToolStripMenuItem.Name = "уликиToolStripMenuItem";
+            this.уликиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.уликиToolStripMenuItem.Text = "Улики";
+            // 
+            // экспертизыToolStripMenuItem
+            // 
+            this.экспертизыToolStripMenuItem.Name = "экспертизыToolStripMenuItem";
+            this.экспертизыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.экспертизыToolStripMenuItem.Text = "Экспертизы";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // Обвиняемые
             // 
@@ -500,5 +599,14 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьКакCVFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem адвокатыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обвинителиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem статьиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem судьиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem уголовныеДелаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem уликиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem экспертизыToolStripMenuItem;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

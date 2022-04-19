@@ -111,6 +111,10 @@ namespace AccountingOfCourtCases
                     command.Parameters.AddWithValue("Email", emailTextBox.Text);
                     command.Parameters.AddWithValue("Телефон", телефонTextBox.Text);
                     command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
+                    adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
+                    table = new DataTable();
+                    adapter.Fill(table);
+                    comboBox1.DataSource = table;
                     popup = new PopupNotifier
                     {
                         Image = Properties.Resources.connected,
@@ -135,15 +139,6 @@ namespace AccountingOfCourtCases
             label1.Hide();
             label4.Hide();
         }
-
-        private void ComboBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _ = e.KeyChar;
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
-            {
-                e.Handled = true;
-            }
-        }
         private void ПарольTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             _ = e.KeyChar;
@@ -152,7 +147,6 @@ namespace AccountingOfCourtCases
                 e.Handled = true;
             }
         }
-
         //INSERT
         private async void Button2_Click(object sender, EventArgs e)
         {
@@ -181,6 +175,12 @@ namespace AccountingOfCourtCases
                 };
                 popup.Popup();
                 await command.ExecuteNonQueryAsync();
+
+                adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
+                table = new DataTable();
+                adapter.Fill(table);
+                comboBox1.DataSource = table;
+                comboBox2.DataSource = table;
             }
         }
 
@@ -218,8 +218,13 @@ namespace AccountingOfCourtCases
                         ContentText = "Данные успешно удалены!"
                     };
                     popup.Popup();
-
                     await command.ExecuteNonQueryAsync();
+                    
+                    adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
+                    table = new DataTable();
+                    adapter.Fill(table);
+                    comboBox1.DataSource = table;
+                    comboBox2.DataSource = table;
                 }
                 else
                 {
@@ -231,19 +236,11 @@ namespace AccountingOfCourtCases
         //Conditions Texboxes for DELETE
         private void Panel6_MouseMove(object sender, MouseEventArgs e)
         {
+            
+
             label6.Hide();
             label7.Hide();
         }
-
-        private void ComboBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _ = e.KeyChar;
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
-            {
-                e.Handled = true;
-            }
-        }
-
         //SAVE FOR CSV
         private void СохранитьКакCVFToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -323,6 +320,62 @@ namespace AccountingOfCourtCases
         }
 
         //OTHER DB's FORMS
+
+        private void адвокатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Адвокаты адвокаты = new Адвокаты();
+            адвокаты.Show();
+        }
+
+        private void обвинителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвинители обвинители = new Обвинители();
+            обвинители.Show();
+        }
+
+        private void обвиняемыеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвиняемые обвиняемые = new Обвиняемые();
+            обвиняемые.Show();
+        }
+
+        private void статьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Статьи статьи = new Статьи();
+            статьи.Show();
+        }
+
+        private void судьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Судьи судьи = new Судьи();
+            судьи.Show();
+        }
+
+        private void уголовныеДелаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Уголовные_дела уголовные_дела = new Уголовные_дела();
+            уголовные_дела.Show();
+        }
+
+        private void уликиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Улики улики = new Улики();
+            улики.Show();
+        }
+
+        private void экспертизыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Экспертизы экспертизы = new Экспертизы();
+            экспертизы.Show();
+        }
         private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             О_программе о_программе = new О_программе();

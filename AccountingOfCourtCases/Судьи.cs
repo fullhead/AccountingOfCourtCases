@@ -142,5 +142,25 @@ namespace AccountingOfCourtCases
             }
             sw.Close();
         }
+
+        //PRINT
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            printDocument1.Print();
+        }
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(dataGridView1.Size.Width + 10, dataGridView1.Size.Height + 10);
+            dataGridView1.DrawToBitmap(bmp, dataGridView1.Bounds);
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        //UPDATE
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
