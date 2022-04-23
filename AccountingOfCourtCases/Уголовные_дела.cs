@@ -31,6 +31,22 @@ namespace AccountingOfCourtCases
         //STATUS DB
         private void Уголовные_дела_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Экспертизы". При необходимости она может быть перемещена или удалена.
+            this.экспертизыTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Экспертизы);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Обвинители". При необходимости она может быть перемещена или удалена.
+            this.обвинителиTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Обвинители);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Адвокаты". При необходимости она может быть перемещена или удалена.
+            this.адвокатыTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Адвокаты);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Обвиняемые". При необходимости она может быть перемещена или удалена.
+            this.обвиняемыеTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Обвиняемые);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Судьи". При необходимости она может быть перемещена или удалена.
+            this.судьиTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Судьи);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Уголовные_дела". При необходимости она может быть перемещена или удалена.
+            this.уголовные_делаTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Уголовные_дела);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Уголовные_дела". При необходимости она может быть перемещена или удалена.
+            this.уголовные_делаTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Уголовные_дела);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Уголовные_дела". При необходимости она может быть перемещена или удалена.
+            this.уголовные_делаTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Уголовные_дела);
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
             sqlConnection.Open();
             adapter = new SqlDataAdapter("SELECT * FROM Уголовные_дела", sqlConnection);
@@ -157,11 +173,189 @@ namespace AccountingOfCourtCases
         }
 
         //UPDATE
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            if (решение_судаTextBox.Text == "")
+            {
+                label1.Show();
+            }
+            else
+            {
+                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+                sqlConnection.Open();
+                SqlCommand command = new SqlCommand("UPDATE Уголовные_дела SET Код_судьи=@Код_судьи, Код_обвиняемого=@Код_обвиняемого, " +
+                    "Код_адвоката=@Код_адвоката, Код_обвинителя=@Код_обвинителя, Код_экспертизы=@Код_экспертизы, Решение_суда=@Решение_суда, " +
+                    "Примечание=@Примечание WHERE Код_уголовного_дела=@Код_уголовного_дела", sqlConnection);
+                command.Parameters.AddWithValue("Код_уголовного_дела", comboBox1.Text);
+                command.Parameters.AddWithValue("Код_судьи", comboBox2.Text);
+                command.Parameters.AddWithValue("Код_обвиняемого", comboBox3.Text);
+                command.Parameters.AddWithValue("Код_адвоката", comboBox4.Text);
+                command.Parameters.AddWithValue("Код_обвинителя", comboBox5.Text);
+                command.Parameters.AddWithValue("Код_экспертизы", comboBox6.Text);
+                command.Parameters.AddWithValue("Решение_суда", решение_судаTextBox.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
+                popup = new PopupNotifier
+                {
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Уголовные_дела",
+                    ContentText = "Данные успешно обновлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
+        private void решение_судаTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && (l < '0' || l > '9') && l != '\b' && l != '.' && l != ',' && l != ' ' && l != '"')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+            label1.Hide();
+        }
+
+        //INSERT
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (решение_судаTextBox1.Text == "")
+            {
+                label4.Show();
+            }
+            else
+            {
+                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+                sqlConnection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO Уголовные_дела (Код_судьи, Код_обвиняемого, Код_адвоката, Код_обвинителя, Код_экспертизы, Решение_суда, Примечание) VALUES (@Код_судьи, @Код_обвиняемого, @Код_адвоката, @Код_обвинителя, @Код_экспертизы, @Решение_суда, @Примечание)", sqlConnection);
+                command.Parameters.AddWithValue("Код_судьи", comboBox7.Text);
+                command.Parameters.AddWithValue("Код_обвиняемого", comboBox8.Text);
+                command.Parameters.AddWithValue("Код_адвоката", comboBox9.Text);
+                command.Parameters.AddWithValue("Код_обвинителя", comboBox10.Text);
+                command.Parameters.AddWithValue("Код_экспертизы", comboBox11.Text);
+                command.Parameters.AddWithValue("Решение_суда", решение_судаTextBox1.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox1.Text);
+                popup = new PopupNotifier
+                {
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Уголовные дела",
+                    ContentText = "Данные успешно добавлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
+
+                adapter = new SqlDataAdapter("SELECT * FROM Уголовные_дела", sqlConnection);
+                table = new DataTable();
+                adapter.Fill(table);
+                comboBox1.DataSource = table;
+                comboBox12.DataSource = table;
+            }
 
         }
 
+        private void panel5_MouseMove(object sender, MouseEventArgs e)
+        {
+            label4.Hide();
+        }
 
+        private void решение_судаTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && (l < '0' || l > '9') && l != '\b' && l != '.' && l != ',' && l != ' ' && l != '"')
+            {
+                e.Handled = true;
+            }
+        }
+
+        //DELETE
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("DELETE FROM Уголовные_дела WHERE Код_уголовного_дела=@Код_уголовного_дела", sqlConnection);
+            command.Parameters.AddWithValue("Код_уголовного_дела", comboBox12.Text);
+            popup = new PopupNotifier
+            {
+                Image = Properties.Resources.connected,
+                ImageSize = new Size(96, 96),
+                TitleText = "Уголовные дела",
+                ContentText = "Данные успешно удалены!"
+            };
+            popup.Popup();
+            await command.ExecuteNonQueryAsync();
+            adapter = new SqlDataAdapter("SELECT * FROM Уголовные_дела", sqlConnection);
+            table = new DataTable();
+            adapter.Fill(table);
+            comboBox1.DataSource = table;
+            comboBox12.DataSource = table;
+        }
+
+        private void адвокатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Адвокаты адвокаты = new Адвокаты();
+            адвокаты.Show();
+        }
+
+        private void обвинителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвинители обвинители = new Обвинители();
+            обвинители.Show();
+        }
+
+        private void обвиняемыеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвиняемые обвиняемые = new Обвиняемые();
+            обвиняемые.Show();
+        }
+
+        private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Пользователи пользователи = new Пользователи();
+            пользователи.Show();
+
+        }
+
+        private void статьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Статьи статьи = new Статьи();
+            статьи.Show();
+        }
+
+        private void судьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Судьи судьи = new Судьи();
+            судьи.Show();
+        }
+
+        private void уликиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Улики улики = new Улики();
+            улики.Show();
+        }
+
+        private void экспертизыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Экспертизы экспертизы = new Экспертизы();
+            экспертизы.Show();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            О_программе о_программе = new О_программе();
+            о_программе.Show();
+        }
     }
 }

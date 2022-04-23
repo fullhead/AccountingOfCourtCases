@@ -64,6 +64,8 @@
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.адвокатыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountingOfCourtCasesDataSet = new AccountingOfCourtCases.AccountingOfCourtCasesDataSet();
             this.фИОTextBox = new System.Windows.Forms.TextBox();
             this.телефонTextBox = new System.Windows.Forms.TextBox();
             this.адресTextBox = new System.Windows.Forms.TextBox();
@@ -107,8 +109,15 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.адвокатыTableAdapter = new AccountingOfCourtCases.AccountingOfCourtCasesDataSetTableAdapters.АдвокатыTableAdapter();
             this.tableAdapterManager = new AccountingOfCourtCases.AccountingOfCourtCasesDataSetTableAdapters.TableAdapterManager();
-            this.accountingOfCourtCasesDataSet = new AccountingOfCourtCases.AccountingOfCourtCasesDataSet();
-            this.адвокатыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.кодадвокатаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.полDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.возрастDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.адресDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.паспортныеданныеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.компанияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.примечаниеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             код_адвокатаLabel = new System.Windows.Forms.Label();
             фИОLabel = new System.Windows.Forms.Label();
             полLabel = new System.Windows.Forms.Label();
@@ -134,6 +143,8 @@
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.адвокатыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountingOfCourtCasesDataSet)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -141,8 +152,6 @@
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountingOfCourtCasesDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.адвокатыBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // код_адвокатаLabel
@@ -150,7 +159,7 @@
             код_адвокатаLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             код_адвокатаLabel.AutoSize = true;
             код_адвокатаLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            код_адвокатаLabel.Location = new System.Drawing.Point(131, 148);
+            код_адвокатаLabel.Location = new System.Drawing.Point(95, 148);
             код_адвокатаLabel.Name = "код_адвокатаLabel";
             код_адвокатаLabel.Size = new System.Drawing.Size(183, 29);
             код_адвокатаLabel.TabIndex = 40;
@@ -161,7 +170,7 @@
             фИОLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             фИОLabel.AutoSize = true;
             фИОLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            фИОLabel.Location = new System.Drawing.Point(131, 191);
+            фИОLabel.Location = new System.Drawing.Point(95, 191);
             фИОLabel.Name = "фИОLabel";
             фИОLabel.Size = new System.Drawing.Size(86, 29);
             фИОLabel.TabIndex = 44;
@@ -172,7 +181,7 @@
             полLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             полLabel.AutoSize = true;
             полLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            полLabel.Location = new System.Drawing.Point(131, 231);
+            полLabel.Location = new System.Drawing.Point(95, 231);
             полLabel.Name = "полLabel";
             полLabel.Size = new System.Drawing.Size(75, 29);
             полLabel.TabIndex = 46;
@@ -183,7 +192,7 @@
             возрастLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             возрастLabel.AutoSize = true;
             возрастLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            возрастLabel.Location = new System.Drawing.Point(131, 271);
+            возрастLabel.Location = new System.Drawing.Point(95, 271);
             возрастLabel.Name = "возрастLabel";
             возрастLabel.Size = new System.Drawing.Size(123, 29);
             возрастLabel.TabIndex = 48;
@@ -194,7 +203,7 @@
             телефонLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             телефонLabel.AutoSize = true;
             телефонLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            телефонLabel.Location = new System.Drawing.Point(131, 313);
+            телефонLabel.Location = new System.Drawing.Point(95, 313);
             телефонLabel.Name = "телефонLabel";
             телефонLabel.Size = new System.Drawing.Size(125, 29);
             телефонLabel.TabIndex = 50;
@@ -205,7 +214,7 @@
             адресLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             адресLabel.AutoSize = true;
             адресLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            адресLabel.Location = new System.Drawing.Point(707, 151);
+            адресLabel.Location = new System.Drawing.Point(671, 151);
             адресLabel.Name = "адресLabel";
             адресLabel.Size = new System.Drawing.Size(88, 29);
             адресLabel.TabIndex = 52;
@@ -216,7 +225,7 @@
             паспортные_данныеLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             паспортные_данныеLabel.AutoSize = true;
             паспортные_данныеLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            паспортные_данныеLabel.Location = new System.Drawing.Point(707, 191);
+            паспортные_данныеLabel.Location = new System.Drawing.Point(671, 191);
             паспортные_данныеLabel.Name = "паспортные_данныеLabel";
             паспортные_данныеLabel.Size = new System.Drawing.Size(256, 29);
             паспортные_данныеLabel.TabIndex = 54;
@@ -227,7 +236,7 @@
             компанияLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             компанияLabel.AutoSize = true;
             компанияLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            компанияLabel.Location = new System.Drawing.Point(707, 231);
+            компанияLabel.Location = new System.Drawing.Point(671, 231);
             компанияLabel.Name = "компанияLabel";
             компанияLabel.Size = new System.Drawing.Size(149, 29);
             компанияLabel.TabIndex = 56;
@@ -238,7 +247,7 @@
             примечаниеLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             примечаниеLabel.AutoSize = true;
             примечаниеLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            примечаниеLabel.Location = new System.Drawing.Point(707, 271);
+            примечаниеLabel.Location = new System.Drawing.Point(671, 271);
             примечаниеLabel.Name = "примечаниеLabel";
             примечаниеLabel.Size = new System.Drawing.Size(168, 29);
             примечаниеLabel.TabIndex = 58;
@@ -249,7 +258,7 @@
             фИОLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             фИОLabel1.AutoSize = true;
             фИОLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            фИОLabel1.Location = new System.Drawing.Point(120, 152);
+            фИОLabel1.Location = new System.Drawing.Point(84, 152);
             фИОLabel1.Name = "фИОLabel1";
             фИОLabel1.Size = new System.Drawing.Size(86, 29);
             фИОLabel1.TabIndex = 40;
@@ -260,7 +269,7 @@
             полLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             полLabel1.AutoSize = true;
             полLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            полLabel1.Location = new System.Drawing.Point(120, 192);
+            полLabel1.Location = new System.Drawing.Point(84, 192);
             полLabel1.Name = "полLabel1";
             полLabel1.Size = new System.Drawing.Size(75, 29);
             полLabel1.TabIndex = 42;
@@ -271,7 +280,7 @@
             возрастLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             возрастLabel1.AutoSize = true;
             возрастLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            возрастLabel1.Location = new System.Drawing.Point(120, 232);
+            возрастLabel1.Location = new System.Drawing.Point(84, 232);
             возрастLabel1.Name = "возрастLabel1";
             возрастLabel1.Size = new System.Drawing.Size(123, 29);
             возрастLabel1.TabIndex = 44;
@@ -282,7 +291,7 @@
             телефонLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             телефонLabel1.AutoSize = true;
             телефонLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            телефонLabel1.Location = new System.Drawing.Point(120, 272);
+            телефонLabel1.Location = new System.Drawing.Point(84, 272);
             телефонLabel1.Name = "телефонLabel1";
             телефонLabel1.Size = new System.Drawing.Size(125, 29);
             телефонLabel1.TabIndex = 46;
@@ -293,7 +302,7 @@
             адресLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             адресLabel1.AutoSize = true;
             адресLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            адресLabel1.Location = new System.Drawing.Point(708, 150);
+            адресLabel1.Location = new System.Drawing.Point(672, 150);
             адресLabel1.Name = "адресLabel1";
             адресLabel1.Size = new System.Drawing.Size(88, 29);
             адресLabel1.TabIndex = 48;
@@ -304,7 +313,7 @@
             паспортные_данныеLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             паспортные_данныеLabel1.AutoSize = true;
             паспортные_данныеLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            паспортные_данныеLabel1.Location = new System.Drawing.Point(708, 190);
+            паспортные_данныеLabel1.Location = new System.Drawing.Point(672, 190);
             паспортные_данныеLabel1.Name = "паспортные_данныеLabel1";
             паспортные_данныеLabel1.Size = new System.Drawing.Size(256, 29);
             паспортные_данныеLabel1.TabIndex = 50;
@@ -315,7 +324,7 @@
             компанияLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             компанияLabel1.AutoSize = true;
             компанияLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            компанияLabel1.Location = new System.Drawing.Point(708, 230);
+            компанияLabel1.Location = new System.Drawing.Point(672, 230);
             компанияLabel1.Name = "компанияLabel1";
             компанияLabel1.Size = new System.Drawing.Size(149, 29);
             компанияLabel1.TabIndex = 52;
@@ -326,7 +335,7 @@
             примечаниеLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             примечаниеLabel1.AutoSize = true;
             примечаниеLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            примечаниеLabel1.Location = new System.Drawing.Point(708, 270);
+            примечаниеLabel1.Location = new System.Drawing.Point(672, 270);
             примечаниеLabel1.Name = "примечаниеLabel1";
             примечаниеLabel1.Size = new System.Drawing.Size(168, 29);
             примечаниеLabel1.TabIndex = 54;
@@ -334,9 +343,10 @@
             // 
             // код_адвокатаLabel1
             // 
+            код_адвокатаLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             код_адвокатаLabel1.AutoSize = true;
             код_адвокатаLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            код_адвокатаLabel1.Location = new System.Drawing.Point(454, 94);
+            код_адвокатаLabel1.Location = new System.Drawing.Point(485, 94);
             код_адвокатаLabel1.Name = "код_адвокатаLabel1";
             код_адвокатаLabel1.Size = new System.Drawing.Size(183, 29);
             код_адвокатаLabel1.TabIndex = 38;
@@ -353,7 +363,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1363, 656);
+            this.tabControl1.Size = new System.Drawing.Size(1290, 656);
             this.tabControl1.TabIndex = 8;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1_Selected);
             // 
@@ -369,7 +379,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1355, 627);
+            this.tabPage1.Size = new System.Drawing.Size(1282, 627);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Показать";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -378,6 +388,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -387,6 +398,17 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.кодадвокатаDataGridViewTextBoxColumn,
+            this.фИОDataGridViewTextBoxColumn,
+            this.полDataGridViewTextBoxColumn,
+            this.возрастDataGridViewTextBoxColumn,
+            this.телефонDataGridViewTextBoxColumn,
+            this.адресDataGridViewTextBoxColumn,
+            this.паспортныеданныеDataGridViewTextBoxColumn,
+            this.компанияDataGridViewTextBoxColumn,
+            this.примечаниеDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.адвокатыBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -401,7 +423,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1347, 594);
+            this.dataGridView1.Size = new System.Drawing.Size(1274, 594);
             this.dataGridView1.TabIndex = 13;
             // 
             // pictureBox1
@@ -450,7 +472,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Location = new System.Drawing.Point(4, 4);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1347, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1274, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -461,7 +483,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1355, 627);
+            this.tabPage2.Size = new System.Drawing.Size(1282, 627);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Обновить данные";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -473,7 +495,7 @@
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1347, 619);
+            this.panel1.Size = new System.Drawing.Size(1274, 619);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -504,7 +526,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1347, 619);
+            this.panel4.Size = new System.Drawing.Size(1274, 619);
             this.panel4.TabIndex = 0;
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseMove);
             // 
@@ -568,7 +590,7 @@
             "68",
             "69",
             "70"});
-            this.comboBox7.Location = new System.Drawing.Point(392, 271);
+            this.comboBox7.Location = new System.Drawing.Point(356, 271);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(242, 33);
             this.comboBox7.TabIndex = 64;
@@ -582,7 +604,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Мужской",
             "Женский"});
-            this.comboBox3.Location = new System.Drawing.Point(392, 229);
+            this.comboBox3.Location = new System.Drawing.Point(356, 229);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(242, 33);
             this.comboBox3.TabIndex = 62;
@@ -595,17 +617,27 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(392, 147);
+            this.comboBox1.Location = new System.Drawing.Point(356, 147);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(242, 33);
             this.comboBox1.TabIndex = 60;
             this.comboBox1.ValueMember = "Код_адвоката";
             // 
+            // адвокатыBindingSource
+            // 
+            this.адвокатыBindingSource.DataMember = "Адвокаты";
+            this.адвокатыBindingSource.DataSource = this.accountingOfCourtCasesDataSet;
+            // 
+            // accountingOfCourtCasesDataSet
+            // 
+            this.accountingOfCourtCasesDataSet.DataSetName = "AccountingOfCourtCasesDataSet";
+            this.accountingOfCourtCasesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // фИОTextBox
             // 
             this.фИОTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.фИОTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.фИОTextBox.Location = new System.Drawing.Point(392, 188);
+            this.фИОTextBox.Location = new System.Drawing.Point(356, 188);
             this.фИОTextBox.Name = "фИОTextBox";
             this.фИОTextBox.Size = new System.Drawing.Size(242, 34);
             this.фИОTextBox.TabIndex = 45;
@@ -615,7 +647,7 @@
             // 
             this.телефонTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.телефонTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.телефонTextBox.Location = new System.Drawing.Point(392, 310);
+            this.телефонTextBox.Location = new System.Drawing.Point(356, 310);
             this.телефонTextBox.Name = "телефонTextBox";
             this.телефонTextBox.Size = new System.Drawing.Size(242, 34);
             this.телефонTextBox.TabIndex = 51;
@@ -624,7 +656,7 @@
             // 
             this.адресTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.адресTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.адресTextBox.Location = new System.Drawing.Point(976, 148);
+            this.адресTextBox.Location = new System.Drawing.Point(940, 148);
             this.адресTextBox.Name = "адресTextBox";
             this.адресTextBox.Size = new System.Drawing.Size(242, 34);
             this.адресTextBox.TabIndex = 53;
@@ -633,7 +665,7 @@
             // 
             this.паспортные_данныеTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.паспортные_данныеTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.паспортные_данныеTextBox.Location = new System.Drawing.Point(976, 188);
+            this.паспортные_данныеTextBox.Location = new System.Drawing.Point(940, 188);
             this.паспортные_данныеTextBox.Name = "паспортные_данныеTextBox";
             this.паспортные_данныеTextBox.Size = new System.Drawing.Size(242, 34);
             this.паспортные_данныеTextBox.TabIndex = 55;
@@ -642,7 +674,7 @@
             // 
             this.компанияTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.компанияTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.компанияTextBox.Location = new System.Drawing.Point(976, 228);
+            this.компанияTextBox.Location = new System.Drawing.Point(940, 228);
             this.компанияTextBox.Name = "компанияTextBox";
             this.компанияTextBox.Size = new System.Drawing.Size(242, 34);
             this.компанияTextBox.TabIndex = 57;
@@ -652,7 +684,7 @@
             // 
             this.примечаниеTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.примечаниеTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.примечаниеTextBox.Location = new System.Drawing.Point(976, 268);
+            this.примечаниеTextBox.Location = new System.Drawing.Point(940, 268);
             this.примечаниеTextBox.Name = "примечаниеTextBox";
             this.примечаниеTextBox.Size = new System.Drawing.Size(242, 34);
             this.примечаниеTextBox.TabIndex = 59;
@@ -663,7 +695,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(506, 431);
+            this.label4.Location = new System.Drawing.Point(470, 431);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(312, 25);
@@ -675,7 +707,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(553, 475);
+            this.button1.Location = new System.Drawing.Point(517, 475);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(243, 59);
@@ -691,7 +723,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(1355, 627);
+            this.tabPage3.Size = new System.Drawing.Size(1282, 627);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Ввод данных";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -703,7 +735,7 @@
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1347, 619);
+            this.panel2.Size = new System.Drawing.Size(1274, 619);
             this.panel2.TabIndex = 0;
             // 
             // panel5
@@ -731,7 +763,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1347, 619);
+            this.panel5.Size = new System.Drawing.Size(1274, 619);
             this.panel5.TabIndex = 0;
             this.panel5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel5_MouseMove);
             // 
@@ -795,7 +827,7 @@
             "68",
             "69",
             "70"});
-            this.comboBox8.Location = new System.Drawing.Point(381, 230);
+            this.comboBox8.Location = new System.Drawing.Point(345, 230);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(242, 33);
             this.comboBox8.TabIndex = 65;
@@ -809,7 +841,7 @@
             this.comboBox5.Items.AddRange(new object[] {
             "Мужской",
             "Женский"});
-            this.comboBox5.Location = new System.Drawing.Point(381, 190);
+            this.comboBox5.Location = new System.Drawing.Point(345, 190);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(240, 33);
             this.comboBox5.TabIndex = 57;
@@ -818,7 +850,7 @@
             // 
             this.фИОTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.фИОTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.фИОTextBox1.Location = new System.Drawing.Point(381, 149);
+            this.фИОTextBox1.Location = new System.Drawing.Point(345, 149);
             this.фИОTextBox1.Name = "фИОTextBox1";
             this.фИОTextBox1.Size = new System.Drawing.Size(240, 34);
             this.фИОTextBox1.TabIndex = 41;
@@ -828,7 +860,7 @@
             // 
             this.телефонTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.телефонTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.телефонTextBox1.Location = new System.Drawing.Point(381, 269);
+            this.телефонTextBox1.Location = new System.Drawing.Point(345, 269);
             this.телефонTextBox1.Name = "телефонTextBox1";
             this.телефонTextBox1.Size = new System.Drawing.Size(240, 34);
             this.телефонTextBox1.TabIndex = 47;
@@ -837,7 +869,7 @@
             // 
             this.адресTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.адресTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.адресTextBox1.Location = new System.Drawing.Point(985, 145);
+            this.адресTextBox1.Location = new System.Drawing.Point(949, 145);
             this.адресTextBox1.Name = "адресTextBox1";
             this.адресTextBox1.Size = new System.Drawing.Size(240, 34);
             this.адресTextBox1.TabIndex = 49;
@@ -846,7 +878,7 @@
             // 
             this.паспортные_данныеTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.паспортные_данныеTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.паспортные_данныеTextBox1.Location = new System.Drawing.Point(985, 185);
+            this.паспортные_данныеTextBox1.Location = new System.Drawing.Point(949, 185);
             this.паспортные_данныеTextBox1.Name = "паспортные_данныеTextBox1";
             this.паспортные_данныеTextBox1.Size = new System.Drawing.Size(240, 34);
             this.паспортные_данныеTextBox1.TabIndex = 51;
@@ -855,7 +887,7 @@
             // 
             this.компанияTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.компанияTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.компанияTextBox1.Location = new System.Drawing.Point(985, 225);
+            this.компанияTextBox1.Location = new System.Drawing.Point(949, 225);
             this.компанияTextBox1.Name = "компанияTextBox1";
             this.компанияTextBox1.Size = new System.Drawing.Size(240, 34);
             this.компанияTextBox1.TabIndex = 53;
@@ -865,7 +897,7 @@
             // 
             this.примечаниеTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.примечаниеTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.примечаниеTextBox1.Location = new System.Drawing.Point(985, 265);
+            this.примечаниеTextBox1.Location = new System.Drawing.Point(949, 265);
             this.примечаниеTextBox1.Name = "примечаниеTextBox1";
             this.примечаниеTextBox1.Size = new System.Drawing.Size(240, 34);
             this.примечаниеTextBox1.TabIndex = 55;
@@ -876,7 +908,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(519, 433);
+            this.label5.Location = new System.Drawing.Point(483, 433);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(312, 25);
@@ -888,7 +920,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(562, 462);
+            this.button2.Location = new System.Drawing.Point(526, 462);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(220, 55);
@@ -904,7 +936,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(1355, 627);
+            this.tabPage4.Size = new System.Drawing.Size(1282, 627);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Удалить";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -916,7 +948,7 @@
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1347, 619);
+            this.panel3.Size = new System.Drawing.Size(1274, 619);
             this.panel3.TabIndex = 0;
             // 
             // panel6
@@ -929,17 +961,18 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1347, 619);
+            this.panel6.Size = new System.Drawing.Size(1274, 619);
             this.panel6.TabIndex = 0;
             // 
             // comboBox6
             // 
+            this.comboBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBox6.DataSource = this.адвокатыBindingSource;
             this.comboBox6.DisplayMember = "Код_адвоката";
             this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(643, 94);
+            this.comboBox6.Location = new System.Drawing.Point(674, 94);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 33);
             this.comboBox6.TabIndex = 39;
@@ -949,7 +982,7 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(550, 444);
+            this.button3.Location = new System.Drawing.Point(514, 444);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(249, 59);
@@ -967,7 +1000,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1363, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1290, 28);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1094,21 +1127,92 @@
             this.tableAdapterManager.УликиTableAdapter = null;
             this.tableAdapterManager.ЭкспертизыTableAdapter = null;
             // 
-            // accountingOfCourtCasesDataSet
+            // кодадвокатаDataGridViewTextBoxColumn
             // 
-            this.accountingOfCourtCasesDataSet.DataSetName = "AccountingOfCourtCasesDataSet";
-            this.accountingOfCourtCasesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.кодадвокатаDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.кодадвокатаDataGridViewTextBoxColumn.DataPropertyName = "Код_адвоката";
+            this.кодадвокатаDataGridViewTextBoxColumn.HeaderText = "Код адвоката";
+            this.кодадвокатаDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.кодадвокатаDataGridViewTextBoxColumn.Name = "кодадвокатаDataGridViewTextBoxColumn";
+            this.кодадвокатаDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // адвокатыBindingSource
+            // фИОDataGridViewTextBoxColumn
             // 
-            this.адвокатыBindingSource.DataMember = "Адвокаты";
-            this.адвокатыBindingSource.DataSource = this.accountingOfCourtCasesDataSet;
+            this.фИОDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.фИОDataGridViewTextBoxColumn.Name = "фИОDataGridViewTextBoxColumn";
+            this.фИОDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // полDataGridViewTextBoxColumn
+            // 
+            this.полDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.полDataGridViewTextBoxColumn.DataPropertyName = "Пол";
+            this.полDataGridViewTextBoxColumn.HeaderText = "Пол";
+            this.полDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.полDataGridViewTextBoxColumn.Name = "полDataGridViewTextBoxColumn";
+            this.полDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // возрастDataGridViewTextBoxColumn
+            // 
+            this.возрастDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.возрастDataGridViewTextBoxColumn.DataPropertyName = "Возраст";
+            this.возрастDataGridViewTextBoxColumn.HeaderText = "Возраст";
+            this.возрастDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.возрастDataGridViewTextBoxColumn.Name = "возрастDataGridViewTextBoxColumn";
+            this.возрастDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // телефонDataGridViewTextBoxColumn
+            // 
+            this.телефонDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
+            this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // адресDataGridViewTextBoxColumn
+            // 
+            this.адресDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.адресDataGridViewTextBoxColumn.DataPropertyName = "Адрес";
+            this.адресDataGridViewTextBoxColumn.HeaderText = "Адрес";
+            this.адресDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.адресDataGridViewTextBoxColumn.Name = "адресDataGridViewTextBoxColumn";
+            this.адресDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // паспортныеданныеDataGridViewTextBoxColumn
+            // 
+            this.паспортныеданныеDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.паспортныеданныеDataGridViewTextBoxColumn.DataPropertyName = "Паспортные_данные";
+            this.паспортныеданныеDataGridViewTextBoxColumn.HeaderText = "Паспортные данные";
+            this.паспортныеданныеDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.паспортныеданныеDataGridViewTextBoxColumn.Name = "паспортныеданныеDataGridViewTextBoxColumn";
+            this.паспортныеданныеDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // компанияDataGridViewTextBoxColumn
+            // 
+            this.компанияDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.компанияDataGridViewTextBoxColumn.DataPropertyName = "Компания";
+            this.компанияDataGridViewTextBoxColumn.HeaderText = "Компания";
+            this.компанияDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.компанияDataGridViewTextBoxColumn.Name = "компанияDataGridViewTextBoxColumn";
+            this.компанияDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // примечаниеDataGridViewTextBoxColumn
+            // 
+            this.примечаниеDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.примечаниеDataGridViewTextBoxColumn.DataPropertyName = "Примечание";
+            this.примечаниеDataGridViewTextBoxColumn.HeaderText = "Примечание";
+            this.примечаниеDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.примечаниеDataGridViewTextBoxColumn.Name = "примечаниеDataGridViewTextBoxColumn";
+            this.примечаниеDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Адвокаты
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1363, 684);
+            this.ClientSize = new System.Drawing.Size(1290, 684);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1126,6 +1230,8 @@
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.адвокатыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountingOfCourtCasesDataSet)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -1136,8 +1242,6 @@
             this.panel6.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountingOfCourtCasesDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.адвокатыBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1205,5 +1309,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn кодобвиняемогоDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource адвокатыBindingSource;
         private AccountingOfCourtCasesDataSet accountingOfCourtCasesDataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn кодадвокатаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn фИОDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn полDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn возрастDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn адресDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn паспортныеданныеDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn компанияDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn примечаниеDataGridViewTextBoxColumn;
     }
 }
