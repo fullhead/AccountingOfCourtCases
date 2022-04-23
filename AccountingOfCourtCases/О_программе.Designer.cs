@@ -47,7 +47,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(640, 283);
+            this.groupBox1.Size = new System.Drawing.Size(599, 283);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -56,7 +56,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(263, 204);
+            this.label3.Location = new System.Drawing.Point(229, 204);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 27);
             this.label3.TabIndex = 2;
@@ -67,7 +67,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(137, 160);
+            this.label2.Location = new System.Drawing.Point(103, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(390, 27);
             this.label2.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(146, 65);
+            this.label1.Location = new System.Drawing.Point(112, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(362, 43);
             this.label1.TabIndex = 0;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 283);
+            this.ClientSize = new System.Drawing.Size(599, 283);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "О_программе";

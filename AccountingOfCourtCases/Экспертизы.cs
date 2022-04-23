@@ -31,6 +31,10 @@ namespace AccountingOfCourtCases
         //STATUS DB
         private void Экспертизы_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Экспертизы". При необходимости она может быть перемещена или удалена.
+            this.экспертизыTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Экспертизы);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Экспертизы". При необходимости она может быть перемещена или удалена.
+            this.экспертизыTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Экспертизы);
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
             sqlConnection.Open();
             adapter = new SqlDataAdapter("SELECT * FROM Экспертизы", sqlConnection);
@@ -157,9 +161,169 @@ namespace AccountingOfCourtCases
         }
 
         //UPDATE
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            if (заключениеTextBox.Text == "" || this.comboBox1.Text == "")
+            {
+                label1.Show();
+            }
+            else
+            {
+                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+                sqlConnection.Open();
+                SqlCommand command = new SqlCommand("UPDATE Экспертизы SET Заключение=@Заключение, Примечание=@Примечание WHERE Код_экспертизы=@Код_экспертизы", sqlConnection);
+                command.Parameters.AddWithValue("Код_экспертизы", comboBox1.Text);
+                command.Parameters.AddWithValue("Заключение", заключениеTextBox.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
+                popup = new PopupNotifier
+                {
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Экспертизы",
+                    ContentText = "Данные успешно обновлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
+            }
+        }
 
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+            label1.Hide();
+        }
+
+        private void заключениеTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && (l < '0' || l > '9') && l != '\b' && l != '.' && l != ',' && l != ' ' && l != '"')
+            {
+                e.Handled = true;
+            }
+        }
+
+        //INSERT
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (заключениеTextBox1.Text == "")
+            {
+                label4.Show();
+            }
+            else
+            {
+                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+                sqlConnection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO Экспертизы (Заключение, Примечание) VALUES (@Заключение, @Примечание)", sqlConnection);
+                command.Parameters.AddWithValue("Заключение", заключениеTextBox1.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox1.Text);
+                popup = new PopupNotifier
+                {
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Экспертизы",
+                    ContentText = "Данные успешно добавлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
+
+                adapter = new SqlDataAdapter("SELECT * FROM Экспертизы", sqlConnection);
+                table = new DataTable();
+                adapter.Fill(table);
+                comboBox1.DataSource = table;
+                comboBox2.DataSource = table;
+            }
+        }
+
+        private void заключениеTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && (l < '0' || l > '9') && l != '\b' && l != '.' && l != ',' && l != ' ' && l != '"')
+            {
+                e.Handled = true;
+            }
+        }
+        private void panel5_MouseMove(object sender, MouseEventArgs e)
+        {
+            label4.Hide();
+        }
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("DELETE FROM Экспертизы WHERE Код_экспертизы=@Код_экспертизы", sqlConnection);
+            command.Parameters.AddWithValue("Код_экспертизы", comboBox2.Text);
+            popup = new PopupNotifier
+            {
+                Image = Properties.Resources.connected,
+                ImageSize = new Size(96, 96),
+                TitleText = "Экспертизы",
+                ContentText = "Данные успешно удалены!"
+            };
+            popup.Popup();
+            await command.ExecuteNonQueryAsync();
+            adapter = new SqlDataAdapter("SELECT * FROM Экспертизы", sqlConnection);
+            table = new DataTable();
+            adapter.Fill(table);
+            comboBox1.DataSource = table;
+            comboBox2.DataSource = table;
+        }
+
+        private void адвокатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Адвокаты адвокаты = new Адвокаты();
+            адвокаты.Show();
+        }
+
+        private void обвинителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвинители обвинители = new Обвинители();
+            обвинители.Show();
+        }
+
+        private void обвиняемыеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвиняемые обвиняемые = new Обвиняемые();
+            обвиняемые.Show();
+        }
+
+        private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Пользователи пользователи = new Пользователи();
+            пользователи.Show();
+        }
+
+        private void статьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Статьи статьи = new Статьи();
+            статьи.Show();
+        }
+        private void судьиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Судьи судьи = new Судьи();
+            судьи.Show();
+        }
+        private void угловныеДелаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Уголовные_дела уголовные_дела = new Уголовные_дела();
+            уголовные_дела.Show();
+        }
+        private void уликиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Улики улики = new Улики();
+            улики.Show();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            О_программе о_программе = new О_программе();
+            о_программе.Show();
         }
 
 
