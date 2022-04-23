@@ -32,8 +32,6 @@ namespace AccountingOfCourtCases
         //STATUS DB
         private void Адвокаты_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Обвиняемые". При необходимости она может быть перемещена или удалена.
-            this.обвиняемыеTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Обвиняемые);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "accountingOfCourtCasesDataSet.Адвокаты". При необходимости она может быть перемещена или удалена.
             this.адвокатыTableAdapter.Fill(this.accountingOfCourtCasesDataSet.Адвокаты);
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
@@ -165,7 +163,7 @@ namespace AccountingOfCourtCases
         //UPDATE
         private async void Button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "" || this.comboBox2.Text == "" || this.фИОTextBox.Text == "" || this.comboBox3.Text == "" || this.comboBox7.Text == "" || this.компанияTextBox.Text == "")
+            if (фИОTextBox.Text == "" || this.comboBox3.Text == "" || this.comboBox7.Text == "" || this.компанияTextBox.Text == "")
             {
                 label4.Show();
             }
@@ -173,65 +171,37 @@ namespace AccountingOfCourtCases
             {
                 sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
                 sqlConnection.Open();
-                SqlDataAdapter Tablet = new SqlDataAdapter("Select Count (*) Login From Адвокаты Where Код_адвоката ='" + comboBox1.Text + "'", sqlConnection);
-                DataTable dt = new DataTable();
-                Tablet.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
+                SqlCommand command = new SqlCommand("UPDATE Адвокаты SET ФИО=@ФИО, Пол=@Пол, Возраст=@Возраст, Телефон=@Телефон, Адрес=@Адрес, Паспортные_данные=@Паспортные_данные, Компания=@Компания, Примечание=@Примечание WHERE Код_адвоката=@Код_адвоката", sqlConnection);
+                command.Parameters.AddWithValue("Код_адвоката", comboBox1.Text);
+                command.Parameters.AddWithValue("ФИО", фИОTextBox.Text);
+                command.Parameters.AddWithValue("Пол", comboBox3.Text);
+                command.Parameters.AddWithValue("Возраст", comboBox7.Text);
+                command.Parameters.AddWithValue("Телефон", телефонTextBox.Text);
+                command.Parameters.AddWithValue("Адрес", адресTextBox.Text);
+                command.Parameters.AddWithValue("Паспортные_данные", паспортные_данныеTextBox.Text);
+                command.Parameters.AddWithValue("Компания", компанияTextBox.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
+                popup = new PopupNotifier
                 {
-                    sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                    sqlConnection.Open();
-                    SqlDataAdapter Tablet1 = new SqlDataAdapter("Select Count (*) Login From Обвиняемые Where Код_обвиняемого ='" + comboBox2.Text + "'", sqlConnection);
-                    DataTable dt1 = new DataTable();
-                    Tablet1.Fill(dt1);
-                    if (dt1.Rows[0][0].ToString() == "1")
-                    {
-                        sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                        sqlConnection.Open();
-                        SqlCommand command = new SqlCommand("UPDATE Адвокаты SET Код_обвиняемого=@Код_обвиняемого, ФИО=@ФИО, Пол=@Пол," +
-                        " Возраст=@Возраст, Телефон=@Телефон, Адрес=@Адрес, Паспортные_данные=@Паспортные_данные, Компания=@Компания, Примечание=@Примечание WHERE Код_адвоката=@Код_адвоката", sqlConnection);
-                        command.Parameters.AddWithValue("Код_адвоката", comboBox1.Text);
-                        command.Parameters.AddWithValue("Код_обвиняемого", comboBox2.Text);
-                        command.Parameters.AddWithValue("ФИО", фИОTextBox.Text);
-                        command.Parameters.AddWithValue("Пол", comboBox3.Text);
-                        command.Parameters.AddWithValue("Возраст", comboBox7.Text);
-                        command.Parameters.AddWithValue("Телефон", телефонTextBox.Text);
-                        command.Parameters.AddWithValue("Адрес", адресTextBox.Text);
-                        command.Parameters.AddWithValue("Паспортные_данные", паспортные_данныеTextBox.Text);
-                        command.Parameters.AddWithValue("Компания", компанияTextBox.Text);
-                        command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
-                        popup = new PopupNotifier
-                        {
-                            Image = Properties.Resources.connected,
-                            ImageSize = new Size(96, 96),
-                            TitleText = "Адвокаты",
-                            ContentText = "Данные успешно обновлены!"
-                        };
-                        popup.Popup();
-                        await command.ExecuteNonQueryAsync();
-                    }
-                    else
-                    {
-                        label8.Show();
-                    }
-                }
-                else
-                {
-                    label1.Show();
-                }
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Адвокаты",
+                    ContentText = "Данные успешно обновлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
             }
         }
 
         //Conditions Texboxes for UPDATE
         private void Panel4_MouseMove(object sender, MouseEventArgs e)
         {
-            label1.Hide();
             label4.Hide();
-            label8.Hide();
         }
         private void ФИОTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.' && l != ' ')
             {
                 e.Handled = true;
             }
@@ -240,7 +210,7 @@ namespace AccountingOfCourtCases
         private void КомпанияTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.' && l != ' ' && l != '"')
             {
                 e.Handled = true;
             }
@@ -249,7 +219,7 @@ namespace AccountingOfCourtCases
         //INSERT
         private async void Button2_Click(object sender, EventArgs e)
         {
-            if (comboBox4.Text == "" || this.фИОTextBox1.Text == "" || this.comboBox5.Text == "" || this.comboBox8.Text == "" || this.компанияTextBox1.Text == "")
+            if (фИОTextBox1.Text == "" || this.comboBox5.Text == "" || this.comboBox8.Text == "" || this.компанияTextBox1.Text == "")
             {
                 label5.Show();
             }
@@ -257,38 +227,30 @@ namespace AccountingOfCourtCases
             {
                 sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
                 sqlConnection.Open();
-                SqlDataAdapter Tablet1 = new SqlDataAdapter("Select Count (*) Login From Обвиняемые Where Код_обвиняемого ='" + comboBox4.Text + "'", sqlConnection);
-                DataTable dt1 = new DataTable();
-                Tablet1.Fill(dt1);
-                if (dt1.Rows[0][0].ToString() == "1")
+                SqlCommand command = new SqlCommand("INSERT INTO Адвокаты (ФИО, Пол, Возраст, Телефон, Адрес, Паспортные_данные, Компания, Примечание) VALUES (@ФИО, @Пол, @Возраст, @Телефон, @Адрес, @Паспортные_данные, @Компания, @Примечание)", sqlConnection);
+                command.Parameters.AddWithValue("ФИО", фИОTextBox1.Text);
+                command.Parameters.AddWithValue("Пол", comboBox5.Text);
+                command.Parameters.AddWithValue("Возраст", comboBox8.Text);
+                command.Parameters.AddWithValue("Телефон", телефонTextBox1.Text);
+                command.Parameters.AddWithValue("Адрес", адресTextBox1.Text);
+                command.Parameters.AddWithValue("Паспортные_данные", паспортные_данныеTextBox1.Text);
+                command.Parameters.AddWithValue("Компания", компанияTextBox1.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox1.Text);
+                popup = new PopupNotifier
                 {
-                    sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                    sqlConnection.Open();
-                    SqlCommand command = new SqlCommand("INSERT INTO Адвокаты (Код_обвиняемого, ФИО, Пол, Возраст, Телефон, Адрес, Паспортные_данные, Компания, Примечание) VALUES (@Код_обвиняемого, @ФИО, @Пол, @Возраст, @Телефон, @Адрес, @Паспортные_данные, @Компания, @Примечание)", sqlConnection);
-                    command.Parameters.AddWithValue("Код_обвиняемого", comboBox4.Text);
-                    command.Parameters.AddWithValue("ФИО", фИОTextBox1.Text);
-                    command.Parameters.AddWithValue("Пол", comboBox5.Text);
-                    command.Parameters.AddWithValue("Возраст", comboBox8.Text);
-                    command.Parameters.AddWithValue("Телефон", телефонTextBox1.Text);
-                    command.Parameters.AddWithValue("Адрес", адресTextBox1.Text);
-                    command.Parameters.AddWithValue("Паспортные_данные", паспортные_данныеTextBox1.Text);
-                    command.Parameters.AddWithValue("Компания", компанияTextBox1.Text);
-                    command.Parameters.AddWithValue("Примечание", примечаниеTextBox1.Text);
-                    popup = new PopupNotifier
-                    {
-                        Image = Properties.Resources.connected,
-                        ImageSize = new Size(96, 96),
-                        TitleText = "Адвокаты",
-                        ContentText = "Данные успешно добавлены!"
-                    };
-                    popup.Popup();
-                    await command.ExecuteNonQueryAsync();
-                }
-                else
-                {
-                    label9.Show();
-                }
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Адвокаты",
+                    ContentText = "Данные успешно добавлены!"
+                };
+                popup.Popup();
+                await command.ExecuteNonQueryAsync();
 
+                adapter = new SqlDataAdapter("SELECT * FROM Адвокаты", sqlConnection);
+                table = new DataTable();
+                adapter.Fill(table);
+                comboBox1.DataSource = table;
+                comboBox6.DataSource = table;
             }
         }
 
@@ -296,12 +258,11 @@ namespace AccountingOfCourtCases
         private void Panel5_MouseMove(object sender, MouseEventArgs e)
         {
             label5.Hide();
-            label9.Hide();
         }
-        private void ФИОTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void ФИОTextBox1_KeyPress(object sender, KeyPressEventArgs e) 
         {
             char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.' && l != ' ')
             {
                 e.Handled = true;
             }
@@ -310,47 +271,98 @@ namespace AccountingOfCourtCases
         private void КомпанияTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.' && l != ' ' && l != '"')
             {
                 e.Handled = true;
             }
         }
 
+        //DELETE
         private async void Button3_Click(object sender, EventArgs e)
         {
-            if (this.comboBox2.Text == "")
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("DELETE FROM Адвокаты WHERE Код_адвоката=@Код_адвоката", sqlConnection);
+            command.Parameters.AddWithValue("Код_адвоката", comboBox6.Text);
+            popup = new PopupNotifier
             {
-                label6.Show();
-            }
-            else
-            {
-                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                sqlConnection.Open();
-                SqlDataAdapter Tablet = new SqlDataAdapter("Select Count (*) Login From Адвокаты Where Код_адвоката ='" + comboBox6.Text + "'", sqlConnection);
-                DataTable dt = new DataTable();
-                Tablet.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
-                {
-                    sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                    sqlConnection.Open();
-                    SqlCommand command = new SqlCommand("DELETE FROM Адвокаты WHERE Код_адвоката=@Код_адвоката", sqlConnection);
-                    command.Parameters.AddWithValue("Код_адвоката", comboBox2.Text);
-                    popup = new PopupNotifier
-                    {
-                        Image = Properties.Resources.connected,
-                        ImageSize = new Size(96, 96),
-                        TitleText = "Адвокаты",
-                        ContentText = "Данные успешно удалены!"
-                    };
-                    popup.Popup();
+                Image = Properties.Resources.connected,
+                ImageSize = new Size(96, 96),
+                TitleText = "Адвокаты",
+                ContentText = "Данные успешно удалены!"
+            };
+            popup.Popup();
+            await command.ExecuteNonQueryAsync();
 
-                    await command.ExecuteNonQueryAsync();
-                }
-                else
-                {
-                    label7.Show();
-                }
-            }
+            adapter = new SqlDataAdapter("SELECT * FROM Адвокаты", sqlConnection);
+            table = new DataTable();
+            adapter.Fill(table);
+            comboBox1.DataSource = table;
+            comboBox6.DataSource = table;
+        }
+
+        //OTHER DB's FORMS
+        private void ОбвинителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвинители обвинители = new Обвинители();
+            обвинители.Show();
+        }
+
+        private void ОбвиняемыеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Обвиняемые обвиняемые = new Обвиняемые();
+            обвиняемые.Show();
+        }
+
+        private void ПользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Пользователи пользователи = new Пользователи();
+            пользователи.Show();
+        }
+
+        private void СтатьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Статьи статьи = new Статьи();
+            статьи.Show();
+        }
+
+        private void СудьиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Судьи судьи = new Судьи();
+            судьи.Show();
+
+        }
+
+        private void УголовныеДелаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Уголовные_дела уголовные_дела = new Уголовные_дела();
+            уголовные_дела.Show();
+        }
+
+        private void УликиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Улики улики = new Улики();
+            улики.Show();
+        }
+
+        private void ЭкспертизыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Экспертизы экспертизы = new Экспертизы();
+            экспертизы.Show();
+        }
+
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            О_программе о_программе = new О_программе();
+            о_программе.Show();
         }
     }
 }

@@ -86,7 +86,7 @@ namespace AccountingOfCourtCases
         //UPDATE
         private async void Button1_Click(object sender, EventArgs e)
         {
-            if (this.comboBox1.Text == "" || this.логинTextBox.Text == "" || this.парольTextBox.Text == "")
+            if (логинTextBox.Text == "" || this.парольTextBox.Text == "")
             {
                 label4.Show();
             }
@@ -94,49 +94,32 @@ namespace AccountingOfCourtCases
             {
                 sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
                 sqlConnection.Open();
-                SqlDataAdapter Tablet = new SqlDataAdapter("Select Count (*) Login From Пользователи Where Код_пользователя ='" + comboBox1.Text + "'", sqlConnection);
-                DataTable dt = new DataTable();
-                Tablet.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
+                SqlCommand command = new SqlCommand("UPDATE Пользователи SET Логин=@Логин, ФИО=@ФИО, Роль=@Роль, Пароль=@Пароль," +
+                    " Email=@Email, Телефон=@Телефон, Примечание=@Примечание WHERE Код_пользователя=@Код_пользователя", sqlConnection);
+                command.Parameters.AddWithValue("Код_пользователя", comboBox1.Text);
+                command.Parameters.AddWithValue("Логин", логинTextBox.Text);
+                command.Parameters.AddWithValue("ФИО", фИОTextBox.Text);
+                command.Parameters.AddWithValue("Роль", Convert.ToBoolean(рольCheckBox.Checked));
+                command.Parameters.AddWithValue("Пароль", парольTextBox.Text);
+                command.Parameters.AddWithValue("Email", emailTextBox.Text);
+                command.Parameters.AddWithValue("Телефон", телефонTextBox.Text);
+                command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
+                popup = new PopupNotifier
                 {
-                    sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                    sqlConnection.Open();
-                    SqlCommand command = new SqlCommand("UPDATE Пользователи SET Логин=@Логин, ФИО=@ФИО, Роль=@Роль, Пароль=@Пароль," +
-                        " Email=@Email, Телефон=@Телефон, Примечание=@Примечание WHERE Код_пользователя=@Код_пользователя", sqlConnection);
-                    command.Parameters.AddWithValue("Код_пользователя", comboBox1.Text);
-                    command.Parameters.AddWithValue("Логин", логинTextBox.Text);
-                    command.Parameters.AddWithValue("ФИО", фИОTextBox.Text);
-                    command.Parameters.AddWithValue("Роль", Convert.ToBoolean(рольCheckBox.Checked));
-                    command.Parameters.AddWithValue("Пароль", парольTextBox.Text);
-                    command.Parameters.AddWithValue("Email", emailTextBox.Text);
-                    command.Parameters.AddWithValue("Телефон", телефонTextBox.Text);
-                    command.Parameters.AddWithValue("Примечание", примечаниеTextBox.Text);
-                    adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
-                    table = new DataTable();
-                    adapter.Fill(table);
-                    comboBox1.DataSource = table;
-                    popup = new PopupNotifier
-                    {
-                        Image = Properties.Resources.connected,
-                        ImageSize = new Size(96, 96),
-                        TitleText = "Пользователи",
-                        ContentText = "Данные успешно обновлены!"
-                    };
-                    popup.Popup();
+                    Image = Properties.Resources.connected,
+                    ImageSize = new Size(96, 96),
+                    TitleText = "Пользователи",
+                    ContentText = "Данные успешно обновлены!"
+                };
+                popup.Popup();
 
-                    await command.ExecuteNonQueryAsync();
-                }
-                else
-                {
-                    label1.Show();
-                }
+                await command.ExecuteNonQueryAsync();
             }
         }
 
         //Conditions Texboxes for UPDATE
         private void Panel4_MouseMove(object sender, MouseEventArgs e)
         {
-            label1.Hide();
             label4.Hide();
         }
         private void ПарольTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -189,58 +172,38 @@ namespace AccountingOfCourtCases
         {
             label5.Hide();
         }
-
+        private void парольTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _ = e.KeyChar;
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(8))
+            {
+                e.Handled = true;
+            }
+        }
         //DELETE
         private async void Button3_Click(object sender, EventArgs e)
         {
-            if (this.comboBox2.Text == "")
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("DELETE FROM Пользователи WHERE Код_пользователя=@Код_пользователя", sqlConnection);
+            command.Parameters.AddWithValue("Код_пользователя", comboBox2.Text);
+            popup = new PopupNotifier
             {
-                label6.Show();
-            }
-            else
-            {
-                sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                sqlConnection.Open();
-                SqlDataAdapter Tablet = new SqlDataAdapter("Select Count (*) Login From Пользователи Where Код_пользователя ='" + comboBox2.Text + "'", sqlConnection);
-                DataTable dt = new DataTable();
-                Tablet.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
-                {
-                    sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AccountingOfCourtCases.Properties.Settings.AccountingOfCourtCasesConnectionString"].ConnectionString);
-                    sqlConnection.Open();
-                    SqlCommand command = new SqlCommand("DELETE FROM Пользователи WHERE Код_пользователя=@Код_пользователя", sqlConnection);
-                    command.Parameters.AddWithValue("Код_пользователя", comboBox2.Text);
-                    popup = new PopupNotifier
-                    {
-                        Image = Properties.Resources.connected,
-                        ImageSize = new Size(96, 96),
-                        TitleText = "Пользователи",
-                        ContentText = "Данные успешно удалены!"
-                    };
-                    popup.Popup();
-                    await command.ExecuteNonQueryAsync();
-                    
-                    adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
-                    table = new DataTable();
-                    adapter.Fill(table);
-                    comboBox1.DataSource = table;
-                    comboBox2.DataSource = table;
-                }
-                else
-                {
-                    label7.Show();
-                }
-            }
+                Image = Properties.Resources.connected,
+                ImageSize = new Size(96, 96),
+                TitleText = "Пользователи",
+                ContentText = "Данные успешно удалены!"
+            };
+            popup.Popup();
+            await command.ExecuteNonQueryAsync();
+
+            adapter = new SqlDataAdapter("SELECT * FROM Пользователи", sqlConnection);
+            table = new DataTable();
+            adapter.Fill(table);
+            comboBox1.DataSource = table;
+            comboBox2.DataSource = table;
         }
 
-        //Conditions Texboxes for DELETE
-        private void Panel6_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-
-            label6.Hide();
-            label7.Hide();
-        }
         //SAVE FOR CSV
         private void СохранитьКакCVFToolStripMenuItem_Click(object sender, EventArgs e)
         {
